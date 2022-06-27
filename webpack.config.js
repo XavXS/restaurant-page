@@ -13,6 +13,10 @@ module.exports = {
                 type: 'asset/resource',
             },
             {
+                test: /\.(ttf|otf|woff|woff2)$/i,
+                type: 'asset/resource',
+            },
+            {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
             },

@@ -8,10 +8,24 @@ import Verde from './verde.png';
 import Map from './map.png';
 import './style.css';
 
+var main = document.createElement('div');
+var menu = document.createElement('div');
+var contact = document.createElement('div');
+
+const show = (target) => {
+    main.classList.add('hidden');
+    menu.classList.add('hidden');
+    contact.classList.add('hidden');
+    target.classList.remove('hidden');
+};
+
 function loadPage() {
     const content = document.querySelector('#content');
+
     content.appendChild(createBanner());
     content.appendChild(createContents());
+
+    show(main);
 }
 
 function createBanner() {
@@ -29,18 +43,26 @@ function createBanner() {
 
 function createTabs() {
     const tabs = document.createElement('div');
-    const home = document.createElement('span');
-    const menu = document.createElement('span');
-    const contact = document.createElement('span');
+    const homeTab = document.createElement('span');
+    const menuTab = document.createElement('span');
+    const contactTab = document.createElement('span');
 
-    home.textContent = 'home';
-    menu.textContent = 'menu';
-    contact.textContent = 'contact';
+    homeTab.textContent = 'home';
+    menuTab.textContent = 'menu';
+    contactTab.textContent = 'contact';
 
-    tabs.appendChild(home);
-    tabs.appendChild(menu);
-    tabs.appendChild(contact);
+    homeTab.classList.add('tab');
+    menuTab.classList.add('tab');
+    contactTab.classList.add('tab');
+
+    homeTab.addEventListener('click', () => show(main));
+    menuTab.addEventListener('click', () => show(menu));
+    contactTab.addEventListener('click', () => show(contact));
+
     tabs.classList.add('tabs');
+    tabs.appendChild(homeTab);
+    tabs.appendChild(menuTab);
+    tabs.appendChild(contactTab);
 
     return tabs;
 }
@@ -57,7 +79,6 @@ function createContents() {
 }
 
 function createMain() {
-    const main = document.createElement('div');
     const title = document.createElement('h2');
     const desc = document.createElement('p');
     const img = new Image();
@@ -75,14 +96,12 @@ function createMain() {
 }
 
 function createMenu() {
-    const menu = document.createElement('div');
-
     menu.classList.add('menu');
     menu.appendChild(createItem('Margherita', 'The classic', Margherita));
-    menu.appendChild(createItem('Fungo', 'The enhancer', Fungo));
+    menu.appendChild(createItem('Fungo', 'The complimentary', Fungo));
     menu.appendChild(createItem('Carne', 'For enthusiasts', Carne));
     menu.appendChild(createItem('Fetta', 'The refresher', Fetta));
-    menu.appendChild(createItem('Oliva', 'Much depth', Oliva));
+    menu.appendChild(createItem('Oliva', 'Depth enhancer', Oliva));
     menu.appendChild(createItem('Verde', 'Light and rich', Verde));
 
     return menu;
@@ -107,7 +126,6 @@ function createItem(name, desc, path) {
 }
 
 function createContact() {
-    const contact = document.createElement('div');
     const number = document.createElement('h3');
     const address = document.createElement('h3');
     const map = new Image();
