@@ -1,0 +1,30 @@
+:root {
+    --text-color: white;
+    --banner-color: black;
+}
+
+* {
+    font-family: sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.banner {
+    text-align: center;
+    color: var(--text-color);
+    background-color: var(--banner-color);
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-around;
+}
+
+.menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
